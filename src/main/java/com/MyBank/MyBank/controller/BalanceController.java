@@ -29,11 +29,8 @@ public class BalanceController {
     @GetMapping("/getBalance/{accountNumber}")
     public ResponseEntity<BalanceDto> getBalanceByAccountNumber(@PathVariable long accountNumber) {
         BalanceDto account = balanceService.getBalanceByAccountNumber(accountNumber);
-        if (account == null) {
-            return ResponseEntity.notFound().build();
-        } else {
-            return ResponseEntity.ok(account);
+        return ResponseEntity.ok(account);
         }
 
-    }
+
 }
