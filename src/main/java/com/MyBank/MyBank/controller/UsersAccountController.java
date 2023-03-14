@@ -26,13 +26,12 @@ public class UsersAccountController {
 {
     usersAccountServices.createAccount(user);
 }
-    @GetMapping("/accounts/{accountno}")
-    public ResponseEntity<UsersAccountDetails> getAccountByAccountNumber(@PathVariable long accountno) {
-        UsersAccountDetails account = usersAccountServices.getAccountByAccountNumber(accountno);
+    @GetMapping("/accounts/{accountNumber}")
+    public ResponseEntity<UsersAccountDetails> getAccountByAccountNumber(@PathVariable long accountNumber) {
+        UsersAccountDetails account = usersAccountServices.getAccountByAccountNumber(accountNumber);
         if (account == null) {
             return ResponseEntity.notFound().build();
         } else {
-
             return ResponseEntity.ok(account);
         }
     }

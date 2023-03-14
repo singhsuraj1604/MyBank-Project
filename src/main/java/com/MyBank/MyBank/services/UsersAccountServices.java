@@ -9,16 +9,16 @@ public class UsersAccountServices {
     @Autowired
     public UsersAccountMapper usersAccountMapper;
     public void createAccount(UsersAccountDetails user) {
-        user.setAccountno(generateAccountNo());
+        user.setAccountNumber(generateAccountNumber());
         usersAccountMapper.insert(user);
     }
-    private long generateAccountNo() {
-        long accountno =(long) Math.floor(Math.random() * 999999999) + 1;
-        System.out.println(accountno);
-        return accountno;
+    private long generateAccountNumber() {
+        long accountNumber =(long) Math.floor(Math.random() * 999999999) + 1;
+        System.out.println(accountNumber);
+        return accountNumber;
     }
-    public UsersAccountDetails getAccountByAccountNumber(long accountno) {
-        return usersAccountMapper.getAccountByAccountNumber(accountno);
+    public UsersAccountDetails getAccountByAccountNumber(long accountNumber) {
+        return usersAccountMapper.getAccountByAccountNumber(accountNumber);
     }
 
 }
