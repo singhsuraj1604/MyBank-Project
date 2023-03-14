@@ -13,9 +13,9 @@ public interface UsersAccountMapper {
     List<UsersAccountDetails> getAllUsers();
 
     UsersAccountDetails createAccount(UsersAccountDetails user);
-    @Insert("insert into registration(accountno,name,age,address,mobileno,password) values(#{accountno},#{name},#{age},#{address},#{mobileno},#{password})")
+    @Insert("insert into registration(accountNumber,name,age,address,mobileno,password) values(#{accountNumber},#{name},#{age},#{address},#{mobileno},#{password})")
     void insert(UsersAccountDetails mybank);
 
-    @Select("SELECT * FROM registration WHERE accountno = #{accountno}")
-    UsersAccountDetails getAccountByAccountNumber(@Param("accountno") long accountno);
+    @Select("SELECT * FROM registration WHERE accountNumber = #{accountNumber}")
+    UsersAccountDetails getAccountByAccountNumber(@Param("accountNumber") long accountNumber);
 }

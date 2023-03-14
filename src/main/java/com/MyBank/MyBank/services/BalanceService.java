@@ -5,9 +5,6 @@ import com.MyBank.MyBank.mapper.BalanceMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
-import java.util.Optional;
-
 @Service
 public class BalanceService {
     @Autowired
@@ -32,23 +29,36 @@ public class BalanceService {
         return accountno != null;
     }
     public void mergeBalance(BalanceDto balanceDto) {
-
-        if (isAccountPresent(balanceDto.getAccountNumber())) {
+       try{
+        if (isAccountPresent(balanceDto.getAccountNumber()))
+        {
             balanceMapper.insertInto(balanceDto);
             BalanceDto account = balanceMapper.findByAccount(balanceDto.getAccountNumber());
-            if (balanceDto.getHistory().equals("C")) {
+
+            if (balanceDto.getStatus().equals("C")) {
                 balanceDto.setBalance(account.getBalance().add(balanceDto.getBalance()));
                 balanceMapper.updateBalance(account.getAccountNumber(), balanceDto.getBalance());
-            } else if (balanceDto.getHistory().equals("D")) {
+            }
+            else if (balanceDto.getStatus().equals("D")) {
                 balanceDto.setBalance(account.getBalance().subtract(balanceDto.getBalance()));
                 balanceMapper.updateBalance(account.getAccountNumber(),balanceDto.getBalance());
             }
-        }
+            }
+
         else {
             System.out.println("USER With AccountNumber " + balanceDto.getAccountNumber() + " does not exist,First create account in MyBank ");
         }
     }
+    catch(Exception e)
+    {
+        System.out.println(e);
+    }
 
+}
+
+    public BalanceDto getBalanceByAccountNumber(long balanceDto) {
+        return balanceMapper.getBalanceByAccountNo(balanceDto);
+    }
 }
 
 

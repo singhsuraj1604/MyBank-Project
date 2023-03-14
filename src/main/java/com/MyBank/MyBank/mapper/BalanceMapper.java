@@ -15,13 +15,16 @@ public interface BalanceMapper {
     @Select("SELECT * FROM registration WHERE accountNumber = #{accountNumber}")
     BalanceDto findByAccountNumber(long accountNumber);
 
-    @Insert("insert into transactionStatus(id,accountNumber,balance, currency, updatedDate,history) " +
-           "VALUES (#{id},#{accountNumber},#{balance}, #{currency}, #{updatedDate},#{history})")
+    @Insert("insert into transactionStatus(id,accountNumber,balance, currency, updatedDate,status) " +
+           "VALUES (#{id},#{accountNumber},#{balance}, #{currency}, #{updatedDate},#{status})")
      int insertInto(BalanceDto transactionStatus);
     @Select("SELECT * FROM userbalance WHERE accountNumber = #{accountNumber}")
     BalanceDto findByAccount(long accountNumber);
     @Update("UPDATE userbalance SET balance = #{balance} WHERE accountNumber = #{accountNumber}")
     int updateBalance(@Param("accountNumber") long accountNumber, @Param("balance") BigDecimal balance);
+
+    @Select("SELECT * FROM userbalance WHERE accountNumber = #{accountNumber}")
+    BalanceDto getBalanceByAccountNo(long accountNumber);
 
 }
 

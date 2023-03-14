@@ -7,7 +7,7 @@ public class BalanceDto {
     private BigDecimal balance;
     private String currency;
     private String updatedDate;
-    private String history;
+    private String status;
 
     public int getId() {
         return id;
@@ -15,15 +15,6 @@ public class BalanceDto {
 
     public BalanceDto setId(int id) {
         this.id = id;
-        return this;
-    }
-
-    public String getHistory() {
-        return history;
-    }
-
-    public BalanceDto setHistory(String history) {
-        this.history = history;
         return this;
     }
 
@@ -60,6 +51,15 @@ public class BalanceDto {
 
     public BalanceDto setUpdatedDate(String updatedDate) {
         this.updatedDate = updatedDate;
+        return this;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public BalanceDto setStatus(String status) {
+        this.status = status;
         return this;
     }
 }

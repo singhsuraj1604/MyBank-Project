@@ -1,7 +1,7 @@
 package com.MyBank.MyBank.dto;
 
 public class UsersAccountDetails {
-    private long accountno;
+    private long accountNumber;
     private String name;
     private int age;
     private String address;
@@ -53,12 +53,12 @@ public class UsersAccountDetails {
         return this;
     }
 
-    public long getAccountno() {
-        return accountno;
+    public long getAccountNumber() {
+        return accountNumber;
     }
 
-    public UsersAccountDetails setAccountno(long accountno) {
-        this.accountno = accountno;
+    public UsersAccountDetails setAccountNumber(long accountNumber) {
+        this.accountNumber = accountNumber;
         return this;
     }
 }
